@@ -24,7 +24,7 @@ def publish_vaisala():
     current_date = datetime.now()
 
     payload = {
-            "datetime": current_date.isoformat(),
+            "isodatetime": current_date.isoformat(),
             "temp_c": client.get_temperature(),
             "atmpres_Pa": client.get_pressure() * 100,
             "rel_humidity": client.get_relative_humidity()
