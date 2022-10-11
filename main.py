@@ -12,7 +12,7 @@ mqtt_topic = os.environ["MQTT_TOPIC"]
 mqtt_broker_hostname = os.environ["MQTT_BROKER_HOSTNAME"]
 mqtt_broker_port = int(os.environ["MQTT_BROKER_PORT"])
 vaisala_location = os.environ["VAISALA_LOCATION"]
-vaisala_polling_secs = os.environ.get("VAISALA_POLLING_SECS", 60)
+vaisala_polling_secs = int(os.environ.get("VAISALA_POLLING_SECS", 60))
 
 
 tl = Timeloop()
