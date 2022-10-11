@@ -2,6 +2,7 @@ import json
 import os
 import time
 import paho.mqtt.publish as publish
+from datetime import datetime
 from timeloop import Timeloop
 from datetime import timedelta
 from drivers import VaisalaDriver
@@ -20,9 +21,10 @@ tl = Timeloop()
 @tl.job(interval=timedelta(seconds=vaisala_polling_secs))
 def publish_vaisala():
     client = VaisalaDriver(vaisala_location)
-
+    current_date = datetime.now()
 
     payload = {
+            "datetime": current_date.isoformat(),
             "temperature_C": client.get_temperature(),
             "atm_pressure_hPas": client.get_pressure(),
             "rel_humidity": client.get_relative_humidity()
