@@ -9,6 +9,7 @@ python = "^3.9"
 click = "^8.1.2"
 paho-mqtt = "^1.6.1"
 timeloop = "^1.0.2"
+python-dotenv = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 
