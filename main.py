@@ -7,6 +7,10 @@ from timeloop import Timeloop
 from datetime import timedelta
 from drivers import VaisalaDriver
 
+from dotenv import load_dotenv
+load_dotenv()  # take environment variables from .env.
+
+
 
 mqtt_topic = os.environ["MQTT_TOPIC"]
 mqtt_broker_hostname = os.environ["MQTT_BROKER_HOSTNAME"]
@@ -25,6 +29,7 @@ def publish_vaisala():
 
     payload = {
             "isodatetime": current_date.isoformat(),
+            "datetime": str(time.time_ns() // 1000),
             "temp_c": client.get_temperature(),
             "atmpres_Pa": client.get_pressure() * 100,
             "rel_humidity": client.get_relative_humidity()
